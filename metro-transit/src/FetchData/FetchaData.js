@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
 class FetchData extends Component {
-    state = {  }
+    state = { 
+        dataArray: [], 
+        arrayIsFetched: false, 
+     }
+
     render() { 
         return ( 
             <div>
