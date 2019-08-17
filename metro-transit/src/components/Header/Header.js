@@ -4,10 +4,10 @@ import CodetLogo from "./Codet.png"
 
 const Header = (props) => {
     return ( 
-        <header>
-            <div className="wrapper">
-                <div className="logo">
-                    <img src={CodetLogo} alt="Codet Logo" /> 
+        <header className="headerComponent" data-test="headerComponent">
+            <div className="wrapper" data-test="wrapper">
+                <div className="logo" data-test="logo">
+                    <img className="logoImg" data-test="logoImg" src={CodetLogo} alt="Codet Logo" /> 
                 </div>
             </div>
         </header>
