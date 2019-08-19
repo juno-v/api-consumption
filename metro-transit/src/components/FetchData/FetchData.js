@@ -8,7 +8,7 @@ class FetchData extends Component {
   async getRoutes () {
     try {
 
-      let response = await fetch('http://svc.metrotransit.org/NexTrip/Routes');
+      let response = await fetch('http://svc.metrotransit.org/NexTrip/5/4/7SOL');
 
       if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: ' +
@@ -29,6 +29,8 @@ class FetchData extends Component {
           let parser = new DOMParser(); 
 
           let xmlDoc = parser.parseFromString(data, 'text/xml'); 
+          // console.log(xmlDoc.getElementsByTagName('NexTripRoute'));
+          // console.log(xmlDoc.getElementsByTagName('Description'));
           console.log(xmlDoc);
 
       })
