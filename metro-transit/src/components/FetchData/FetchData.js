@@ -29,8 +29,13 @@ class FetchData extends Component {
           let parser = new DOMParser(); 
 
           let xmlDoc = parser.parseFromString(data, 'text/xml'); 
-          console.log(xmlDoc.getElementsByTagName('NexTripDeparture')[0].childNodes[7].innerHTML);
-          // console.log(xmlDoc.getElementsByTagName('Description'));
+          // console.log(xmlDoc.getElementsByTagName('NexTripDeparture')[0].childNodes[7].innerHTML);
+
+          let departureList = xmlDoc.getElementsByTagName('NexTripDeparture'); 
+          for(let i =0; i < departureList.length; i++ ) {
+            console.log(`the direction is`, departureList[i].childNodes[7].innerHTML);
+            console.log(`hello world`); 
+          }
           // console.log(xmlDoc);
 
       })
