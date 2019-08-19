@@ -29,9 +29,9 @@ class FetchData extends Component {
           let parser = new DOMParser(); 
 
           let xmlDoc = parser.parseFromString(data, 'text/xml'); 
-          // console.log(xmlDoc.getElementsByTagName('NexTripRoute'));
+          console.log(xmlDoc.getElementsByTagName('NexTripDeparture')[0].childNodes[7].innerHTML);
           // console.log(xmlDoc.getElementsByTagName('Description'));
-          console.log(xmlDoc);
+          // console.log(xmlDoc);
 
       })
         // console.log('hello world')
