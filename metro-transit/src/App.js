@@ -7,11 +7,11 @@ import FetchData from "./components/FetchData/FetchData";
 function App() {
   return (
     <div>
-      <Header/>
+      {/* <Header/>
 
       <section className="main">
         <Headline header="Posts" description="Click the button to render posts" /> 
-      </section>
+      </section> */}
       
      <h1> APP.JS </h1>
      <FetchData /> 

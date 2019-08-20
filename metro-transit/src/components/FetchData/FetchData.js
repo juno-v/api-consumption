@@ -2,53 +2,31 @@ import React, { Component } from 'react';
 
 class FetchData extends Component {
   state = { 
-    routeList: '', 
+    routeList: [], 
   }
 
   async getRoutes () {
     try {
 
-      let response = await fetch('http://svc.metrotransit.org/NexTrip/5/4/7SOL');
+      // let response = await fetch('http://svc.metrotransit.org/NexTrip/5/4/7SOL');
+      let response = await fetch('http://svc.metrotransit.org/NexTrip/Routes?format=json');
 
       if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: ' +
           response.status);
         return;
-
-      // inserting a console.log here temporarily to avoid exxessive API calls. 
-      // website states do not request more than once every 30 seconds. 
-      // console.log(`hello world`); 
-
       }
 
       else {
-        response.text().then(function(data){
-          // console.log(data);
-          
-          // create object to parse
-          let parser = new DOMParser(); 
+        // console.log(response);
+        response.json().then((data) => {
+            // console.log(data);
 
-          let xmlDoc = parser.parseFromString(data, 'text/xml'); 
-          // console.log(xmlDoc.getElementsByTagName('NexTripDeparture')[0].childNodes[7].innerHTML);
-
-          let departureList = xmlDoc.getElementsByTagName('NexTripDeparture'); 
-          for(let i =0; i < departureList.length; i++ ) {
-            console.log(`the direction is`, departureList[i].childNodes[7].innerHTML);
-            console.log(`hello world`); 
-          }
-          // console.log(xmlDoc);
-
-      })
-        // console.log('hello world')
-        // this.setState({
-        //   ...this.state, 
-        //   routeList: response.data,
-        // })
+            this.setState({
+              routeList: data, 
+            })
+        });
       }
-
-      // await response.json().then(function(data) {
-      //   console.log('@@@@@@ the data is!!!!! :)', data.Actual);
-      // });
 
     }
 
@@ -57,17 +35,32 @@ class FetchData extends Component {
     }
   }
 
+  test = () => {
+    // check to see if this.state.routeList contains the turn dat from fetching /NexTrip/Routes
+    console.log(`clicked!`, this.state.routeList)
+    console.log(this.state.routeList[0])
+  }
+
   componentDidMount() {
     this.getRoutes(); 
+    console.log(this.state.routeList)
   }
 
   render() { 
+
     return ( 
       <div>
-        <h1> hi i'm fetching data. </h1>
+
+        {/* test to see if stae contains the route list data */}
+        {JSON.stringify(this.state.routeList[0])}
+
         <p>
-        {this.state.routeList}
+        {this.state.routeList.length > 0 ? this.state.routeList[0]["Description"] : <p> i don't have nothing </p> }
         </p>
+
+         <button onClick={this.test}> 
+           click me
+         </button>
       </div>
      );
   }
