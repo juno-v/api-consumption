@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import "./FetchDirection.css"; 
+import FetchStops from "../FetchStops/FetchStops"; 
 
 class FetchDirection extends Component {
     state = { 
         routeID: this.props.routeID, 
         selectedRoute: this.props.selectedRoute, 
-        routeDirection: '', 
+        directionOptions: '', 
+        selectedDirection: '', 
+        showGetStopsComponent: false, 
     }
 
     async getDirection () {
@@ -23,7 +27,7 @@ class FetchDirection extends Component {
           else { 
             response.json().then((data) => {
                 this.setState({
-                    routeDirection: data, 
+                    directionOptions: data, 
                 })
             });
           }
@@ -34,8 +38,18 @@ class FetchDirection extends Component {
         }
       }
 
+      selectRouteDirection = (event) => {
+          console.log(event.target.value)
+          this.setState({
+              ...this.state, 
+              selectedDirection: event.target.value, 
+              showGetStopsComponent: !this.state.showGetStopsComponent, 
+          })
+      }
+
       check = () => {
-          console.log(`the direction object is `, this.state.routeDirection)
+        //   console.log(`the direction object is `, this.state.directionOptions);
+          console.log(`the selected direction is `, this.state.selectedDirection);
       }
 
      componentDidMount () {
@@ -47,17 +61,31 @@ class FetchDirection extends Component {
             <div>
                 <p> SELECT A DIRECTION </p>
                 <p> {this.state.selectedRoute} </p>
-                {this.state.routeDirection.length > 0 ?
-                this.state.routeDirection.map((route, index) => {
+                {this.state.directionOptions.length > 0 ?
+                this.state.directionOptions.map((route, index) => {
                     return( 
-                        <div key={index}>
+                        <div className="routeDirection"
+                        key={index}>
                             <p>{route["Text"]}</p>
                             <p>{route["Value"]}</p>
+
+                            <button
+                            onClick={this.selectRouteDirection}
+                            value={route["Value"]}>
+                                SELECT THIS DIRECTION
+                            </button>
                         </div>
                     )
                 }) : null} 
+
+                {this.state.showGetStopsComponent ?
+                <FetchStops 
+                selectedRoute={this.state.selectedDirection} /> 
+                :
+                null }
                 
                 <button onClick={this.check}> CHECK </button>
+                
             </div>
          );
     }
