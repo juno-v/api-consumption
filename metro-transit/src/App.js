@@ -13,7 +13,6 @@ function App() {
         <Headline header="Posts" description="Click the button to render posts" /> 
       </section> */}
       
-     <h1> APP.JS </h1>
      <FetchData /> 
     </div>
   );

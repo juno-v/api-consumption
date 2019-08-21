@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./FetchData.css"; 
 
 class FetchData extends Component {
   state = { 
@@ -31,7 +32,8 @@ class FetchData extends Component {
   }
 
   test = () => {
-    // check to see if this.state.routeList contains the turn dat from fetching /NexTrip/Routes
+    // check to see if this.state.routeList contains the turn data from 
+    // fetching /NexTrip/Routes
     console.log(`clicked!`, this.state.routeList)
     console.log(this.state.routeList[0])
   }
@@ -43,23 +45,17 @@ class FetchData extends Component {
   render() { 
 
     return ( 
-      <div>
-
-        {/* test to see if stae contains the route list data */}
-        {JSON.stringify(this.state.routeList[0])}
-
+      <div className="fetchDataContainerDiv">
+        <h1> Transit Routes in service for today </h1>
         {this.state.routeList.length > 0 ? 
-          // this.state.routeList[0]["Description"] : 
         this.state.routeList.map((route, index) => {
           return(
-            <p key={index}> {route["Description"]} </p>
+            <div key={index}> 
+              {route["Description"]} 
+            </div>
           )
         }) : 
-          <p> i don't have nothing </p> }
-
-         <button onClick={this.test}> 
-           click me
-         </button>
+          <p> Unable to get the route list. </p> }
       </div>
      );
   }
