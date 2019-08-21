@@ -8,7 +8,6 @@ class FetchData extends Component {
   async getRoutes () {
     try {
 
-      // let response = await fetch('http://svc.metrotransit.org/NexTrip/5/4/7SOL');
       let response = await fetch('http://svc.metrotransit.org/NexTrip/Routes?format=json');
 
       if (response.status !== 200) {
@@ -17,17 +16,13 @@ class FetchData extends Component {
         return;
       }
 
-      else {
-        // console.log(response);
+      else { 
         response.json().then((data) => {
-            // console.log(data);
-
             this.setState({
               routeList: data, 
             })
         });
       }
-
     }
 
     catch { 
@@ -43,7 +38,6 @@ class FetchData extends Component {
 
   componentDidMount() {
     this.getRoutes(); 
-    console.log(this.state.routeList)
   }
 
   render() { 
@@ -54,9 +48,14 @@ class FetchData extends Component {
         {/* test to see if stae contains the route list data */}
         {JSON.stringify(this.state.routeList[0])}
 
-        <p>
-        {this.state.routeList.length > 0 ? this.state.routeList[0]["Description"] : <p> i don't have nothing </p> }
-        </p>
+        {this.state.routeList.length > 0 ? 
+          // this.state.routeList[0]["Description"] : 
+        this.state.routeList.map((route, index) => {
+          return(
+            <p key={index}> {route["Description"]} </p>
+          )
+        }) : 
+          <p> i don't have nothing </p> }
 
          <button onClick={this.test}> 
            click me
