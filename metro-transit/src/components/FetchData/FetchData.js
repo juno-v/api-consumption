@@ -6,6 +6,7 @@ class FetchData extends Component {
   state = { 
     routeList: [], 
     showRouteDirectionComponent: false, 
+    selectedRoute: '',
     routeID: '', 
   }
 
@@ -36,11 +37,12 @@ class FetchData extends Component {
 
   getRouteDirection = (event) => {
     console.log(event.target.value)
-    
+    console.log(`@@@@@@@@ SHOW ROUTE`, event.target.name)
     this.setState({
       ...this.state, 
       showRouteDirectionComponent: !this.state.showRouteDirectionComponent, 
       routeID: event.target.value, 
+      selectedRoute: event.target.name, 
     })
   }
 
@@ -70,14 +72,19 @@ class FetchData extends Component {
               <button
               onClick={this.getRouteDirection}
               value={route["Route"]} 
+              name={route["Description"]} 
               > SELECT </button>
             </div>
           )
         }) : 
           <p> Unable to get the route list. </p> }
 
+
         {this.state.showRouteDirectionComponent ?
-        <FetchDirection routeID={this.state.routeID} /> :
+        <FetchDirection 
+        routeID={this.state.routeID}
+        selectedRoute={this.state.selectedRoute} /> 
+        :
         null }
       </div>
      );

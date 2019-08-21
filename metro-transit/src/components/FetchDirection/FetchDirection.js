@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class FetchDirection extends Component {
     state = { 
         routeID: this.props.routeID, 
+        selectedRoute: this.props.selectedRoute, 
         routeDirection: '', 
     }
 
@@ -44,7 +45,8 @@ class FetchDirection extends Component {
     render() { 
         return ( 
             <div>
-                <p> YOU SEE THE FETCH DIRECTION COMPONENT? </p>
+                <p> SELECT A DIRECTION </p>
+                <p> {this.state.selectedRoute} </p>
                 <button onClick={this.check}> CHECK </button>
             </div>
          );
