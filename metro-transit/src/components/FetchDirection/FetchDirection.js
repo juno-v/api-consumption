@@ -47,6 +47,16 @@ class FetchDirection extends Component {
             <div>
                 <p> SELECT A DIRECTION </p>
                 <p> {this.state.selectedRoute} </p>
+                {this.state.routeDirection.length > 0 ?
+                this.state.routeDirection.map((route, index) => {
+                    return( 
+                        <div key={index}>
+                            <p>{route["Text"]}</p>
+                            <p>{route["Value"]}</p>
+                        </div>
+                    )
+                }) : null} 
+                
                 <button onClick={this.check}> CHECK </button>
             </div>
          );
