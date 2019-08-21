@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import "./FetchData.css"; 
+import FetchDirection from "../FetchDirection/FetchDirection"; 
 
 class FetchData extends Component {
   state = { 
     routeList: [], 
+    showRouteDirectionComponent: false, 
+    routeID: '', 
   }
 
   async getRoutes () {
@@ -31,6 +34,16 @@ class FetchData extends Component {
     }
   }
 
+  getRouteDirection = (event) => {
+    console.log(event.target.value)
+    
+    this.setState({
+      ...this.state, 
+      showRouteDirectionComponent: !this.state.showRouteDirectionComponent, 
+      routeID: event.target.value, 
+    })
+  }
+
   test = () => {
     // check to see if this.state.routeList contains the turn data from 
     // fetching /NexTrip/Routes
@@ -47,15 +60,25 @@ class FetchData extends Component {
     return ( 
       <div className="fetchDataContainerDiv">
         <h1> Transit Routes in service for today </h1>
+
         {this.state.routeList.length > 0 ? 
         this.state.routeList.map((route, index) => {
           return(
             <div key={index}> 
               {route["Description"]} 
+
+              <button
+              onClick={this.getRouteDirection}
+              value={route["Route"]} 
+              > SELECT </button>
             </div>
           )
         }) : 
           <p> Unable to get the route list. </p> }
+
+        {this.state.showRouteDirectionComponent ?
+        <FetchDirection routeID={this.state.routeID} /> :
+        null }
       </div>
      );
   }
