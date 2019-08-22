@@ -13,6 +13,7 @@ class GetStops extends Component {
         GetTimepointDepartures: false, 
     }
 
+    // fetching stops available for the selected route and direction passed from props 
     async getDirection () {
         try {
           
@@ -41,6 +42,11 @@ class GetStops extends Component {
         }
       }
 
+      // retrieving the selected bus stop to update state 
+      // to use for fetching the depart times for a bus's: 
+      // route
+      // direction 
+      // stop 
       selectGoingTo = (event) => {
           console.log(`Going to:`, event.target.name)
 
@@ -52,9 +58,10 @@ class GetStops extends Component {
           })
       }
 
-     componentDidMount () {
-         this.getDirection(); 
-     }
+    // fetch stop once component is mounted 
+    componentDidMount () {
+        this.getDirection(); 
+    }
 
     render() { 
         return ( 

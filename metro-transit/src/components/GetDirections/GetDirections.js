@@ -11,6 +11,7 @@ class GetDirections extends Component {
         showGetStopsComponent: false, 
     }
 
+    // fetch direction options for the selected route passed from props. 
     async getDirection () {
         try {
           
@@ -38,19 +39,22 @@ class GetDirections extends Component {
         }
       }
 
-      selectRouteDirection = (event) => {
-          console.log(`Route direction:`, event.target.value);
+    // retrieving the selected route direction to update state
+    // to use for fetching the stops available for the selected route and direction 
+    selectRouteDirection = (event) => {
+        console.log(`Route direction:`, event.target.value);
 
-          this.setState({
-              ...this.state, 
-              selectedDirection: event.target.value, 
-              showGetStopsComponent: !this.state.showGetStopsComponent, 
-          })
-      }
+        this.setState({
+            ...this.state, 
+            selectedDirection: event.target.value, 
+            showGetStopsComponent: !this.state.showGetStopsComponent, 
+        })
+    }
 
-     componentDidMount () {
-         this.getDirection(); 
-     }
+    // fetch route's direction options once component is mounted 
+    componentDidMount () {
+        this.getDirection(); 
+    }
 
     render() { 
         return ( 
@@ -74,7 +78,9 @@ class GetDirections extends Component {
                             </button>
                         </div>
                     )
-                }) : null} 
+                }) : 
+                <p> This route doesn't have any stops schedule.
+                     Please select a different rounte. </p>} 
 
                 {this.state.showGetStopsComponent ?
 

@@ -14,6 +14,10 @@ class GetTimepointDepartures extends Component {
 
     }
 
+    // fetch the departing time of a buses specific: 
+    // - route 
+    // - direction 
+    // - stop 
     async getDeparture () {
         try {
           
@@ -49,70 +53,87 @@ class GetTimepointDepartures extends Component {
         })
       }
 
+      // used for testing to see if the route's details are in state 
       checkFinalResult = () => {
         console.log(`check overall selections`, this.state); 
       }
 
-     componentDidMount () {
-         this.getDeparture(); 
-         console.log(this.state)
-     }
+    // fetch departure time once component is mounted
+    componentDidMount () {
+        this.getDeparture(); 
+    }
 
-     departureInMinutes = (time) => {
-        let date = time; 
-        let convertedDate = []
-        
-        for(let i=0; i < date.length; i++) {
-          let convert = parseInt(date[i]); 
-        
-          if(isNaN(convert) === false) {
-            convertedDate.push(convert); 
-          }
+    // compute when the next bus will be depart in minutes 
+    departureInMinutes = (time) => {
+      let date = time; 
+      let convertedDate = []
+      
+      // go through each index and extract only those that are numbers 
+      for(let i=0; i < date.length; i++) {
+        let convert = parseInt(date[i]); 
+      
+        if(isNaN(convert) === false) {
+          convertedDate.push(convert); 
         }
-        convertedDate.pop();
-        convertedDate.pop();
-        convertedDate.pop();
-        convertedDate.pop();
-        
-        convertedDate = convertedDate.join(""); 
-        convertedDate= parseInt(convertedDate); 
-        
-        let currentDate = new Date(); 
-        let currentTime = currentDate.getTime();
-        
-        let departTime = convertedDate; 
-        
-        let result = departTime - currentTime; 
-        
-        result = result / 1000 / 60;
-        
-        time =  Math.floor(result); 
-        return time; 
       }
 
+      // remove the last four numbers, not used for computing minutes
+      convertedDate.pop();
+      convertedDate.pop();
+      convertedDate.pop();
+      convertedDate.pop();
+
+      // join each index in array 
+      convertedDate = convertedDate.join(""); 
+
+      // converse the joined string array to a number 
+      convertedDate = parseInt(convertedDate); 
+      
+      // initlized current date and time to do the math for how many minutes away
+      // the bus is going to be departing at 
+      let currentDate = new Date(); 
+      let currentTime = currentDate.getTime();
+      
+      let departTime = convertedDate; 
+      
+      
+      let result = departTime - currentTime; 
+      
+      // converting milliseconds to minutes 
+      result = result / 1000 / 60;
+      
+      // decided to round down. would rather be early than late to a bus route.
+      // NOTE: 
+      // tested math.floor and math.ceil via Postman GET requests, 
+      // seemed to get results that matched math.ceil  
+      time =  Math.floor(result); 
+      return time; 
+    }
 
     render() { 
 
+    // convert the number from api fetches into their designated directions
+    let direction = this.state.selectedDirection; 
+    if (direction === "4") {
+        direction = 'NORTH'; 
+    }
+    else if (direction === "3") {
+        direction = 'WEST';
+    }
 
-        let direction = this.state.selectedDirection; 
-        if (direction === "4") {
-            direction = 'NORTH'; 
-        }
-        else if (direction === "3") {
-            direction = 'WEST';
-        }
+    else if (direction === "2") {
+        direction = 'EAST';
+    }
+    else if (direction === "1") {
+        direction = 'SOUTH';
+    }
+    else {
+        direction = 'Error, unable to retrieve direction. Try again later.'; 
+    }
 
-        else if (direction === "2") {
-            direction = 'EAST';
-        }
-        else if (direction === "1") {
-            direction = 'SOUTH';
-        }
-        else {
-            direction = 'Error, unable to retrieve direction. Try again later.'; 
-        }
-
-        let currentDateTime = new Date(); 
+    // creating current date and time variable to reference in final result 
+    // rather than having just minutes 
+    let currentDateTime = new Date(); 
 
         return ( 
             <div>
@@ -148,7 +169,8 @@ class GetTimepointDepartures extends Component {
                   <p>Bus route is departing at {currentDateTime.toUTCString()} in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
                 </div>
                 :
-                <p>Please select a departure option to see your final route details!</p>}
+                <p>Unable to retrieve final results. Please select a departure time again. 
+                  Refresh if message still occurs. </p>}
             </div>
          );
     }

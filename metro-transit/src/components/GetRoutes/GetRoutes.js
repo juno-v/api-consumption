@@ -13,6 +13,7 @@ class GetRoutes extends Component {
   async getRoutes () {
     try {
 
+      // fetch list of Metro Transit routes in services for the day
       let response = await fetch('http://svc.metrotransit.org/NexTrip/Routes?format=json');
 
       if (response.status !== 200) {
@@ -35,6 +36,8 @@ class GetRoutes extends Component {
     }
   }
 
+  // retrieving the route number to update state  
+  // to use for fetching the direction of the route 
   getRouteDirection = (event) => {
     console.log(`LEAVING from route`, event.target.name);
     console.log(`Route number`, event.target.value);
@@ -47,13 +50,12 @@ class GetRoutes extends Component {
     })
   }
 
+  // check to see if data from fetching route list exists
   test = () => {
-    // check to see if this.state.routeList contains the turn data from 
-    // fetching /NexTrip/Routes
     console.log(`clicked!`, this.state.routeList)
-    console.log(this.state.routeList[0])
   }
 
+  // fetch route list once component mounts 
   componentDidMount() {
     this.getRoutes(); 
   }
@@ -63,8 +65,9 @@ class GetRoutes extends Component {
     return ( 
       <div className="fetchDataContainerDiv">
         <div className="routeListDiv">
-        <h1> Transit Routes in service for today </h1> 
+        <h1> Metro transit routes in service for today </h1> 
         <hr/> 
+
 
         {this.state.routeList.length > 0 ? 
         this.state.routeList.map((route, index) => {
@@ -80,7 +83,8 @@ class GetRoutes extends Component {
             </div>
           )
         }) : 
-          <p> Unable to get the route list. </p> }
+          <h1> Currently getting list of routes in service for the day. 
+          Please reload or try again later if this message continues to display. </h1> }
 
         <hr/>
 
