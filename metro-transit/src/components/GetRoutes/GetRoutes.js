@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./GetRoutes.scss"; 
-import FetchDirection from "../FetchDirection/FetchDirection"; 
+import GetDirections from "../GetDirections/GetDirections"; 
 
 class GetRoutes extends Component {
   state = { 
@@ -86,7 +86,7 @@ class GetRoutes extends Component {
 
 
         {this.state.showRouteDirectionComponent ?
-        <FetchDirection 
+        <GetDirections 
         routeNumber={this.state.routeNumber}
         leavingFrom={this.state.leavingFrom} /> 
         :

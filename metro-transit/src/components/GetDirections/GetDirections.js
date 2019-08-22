@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import "./FetchDirection.css"; 
+import "./GetDirections.scss"; 
 import FetchStops from "../FetchStops/FetchStops"; 
 
-class FetchDirection extends Component {
+class GetDirections extends Component {
     state = { 
         routeNumber: this.props.routeNumber, 
         leavingFrom: this.props.leavingFrom, 
@@ -89,4 +89,4 @@ class FetchDirection extends Component {
     }
 }
  
-export default FetchDirection;
+export default GetDirections;
