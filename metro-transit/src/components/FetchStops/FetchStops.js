@@ -42,7 +42,7 @@ class FetchStops extends Component {
       }
 
       selectGoingTo = (event) => {
-          console.log(event.target.value)
+          console.log(`Going to:`, event.target.name)
 
           this.setState({
               ...this.state, 

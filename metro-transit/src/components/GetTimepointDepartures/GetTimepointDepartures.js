@@ -42,11 +42,14 @@ class GetTimepointDepartures extends Component {
       }
 
       selectDeparture = (event) => {
-        console.log(event.target.value); 
         this.setState({
             ...this.state, 
             selectedDeparture: event.target.value, 
         })
+      }
+
+      checkFinalResult = () => {
+        console.log(`check overall selections`, this.state); 
       }
 
      componentDidMount () {
@@ -97,7 +100,7 @@ class GetTimepointDepartures extends Component {
                     )
                 }) : null} 
 
-                <h1>DETAILS ABOUT SELECTED ROUTE</h1>
+                <h1 onClick={this.checkFinalResult} >DETAILS ABOUT SELECTED ROUTE</h1>
 
                 {this.state.selectedDeparture.length > 0 ? 
                 <div>
@@ -107,7 +110,7 @@ class GetTimepointDepartures extends Component {
                     <p>Date/Time departing: {this.state.selectedDeparture}</p>
                 </div>
                 :
-                <p>sorry! couldn't load anything</p>}
+                <p>Please select a departure option to see your final route details!</p>}
             </div>
          );
     }

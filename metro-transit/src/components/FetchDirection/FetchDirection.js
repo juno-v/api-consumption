@@ -39,7 +39,8 @@ class FetchDirection extends Component {
       }
 
       selectRouteDirection = (event) => {
-          console.log(event.target.value)
+          console.log(`Route direction:`, event.target.value);
+
           this.setState({
               ...this.state, 
               selectedDirection: event.target.value, 
