@@ -52,6 +52,10 @@ class GetTimepointDepartures extends Component {
         console.log(`check overall selections`, this.state); 
       }
 
+      check = () => {
+          console.log(this.state.selectedDeparture[0])
+      }
+
      componentDidMount () {
          this.getDeparture(); 
      }
@@ -78,6 +82,15 @@ class GetTimepointDepartures extends Component {
             direction = 'Error, unable to retrieve direction. Try again later.'; 
         }
 
+
+        let time; 
+        if (this.state.selectedDeparture[0] > 12) {
+            time = "PM"
+        } 
+        else {
+            time = "AM"; 
+        }
+
         return ( 
             <div>
               
@@ -89,12 +102,12 @@ class GetTimepointDepartures extends Component {
                     return( 
                         <div className="stops"
                         key={index}>
-                            <p>{stop["DepartureTime"]}</p>
-                            <p>{stop["DepartureText"]}</p>
+                            {/* <p>{stop["DepartureTime"]}</p> */}
+                            <p>{stop["DepartureText"]} {time}</p>
 
                             <button
                             onClick={this.selectDeparture}
-                            value={stop["DepartureTime"]}>
+                            value={stop["DepartureText"]}>
                                 SELECT THIS STOP
                             </button>
                         </div>
@@ -110,7 +123,7 @@ class GetTimepointDepartures extends Component {
                     <p>Leaving From: {this.state.leavingFrom}</p>
                     <p>Going To: {this.state.selectedStopname}</p>
                     <p>Direction: {direction} </p>
-                    <p>Date/Time departing: {this.state.selectedDeparture}</p>
+                    <p>Date/Time departing: {this.state.selectedDeparture} {time} </p>
                 </div>
                 :
                 <p>Please select a departure option to see your final route details!</p>}
