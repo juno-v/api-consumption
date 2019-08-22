@@ -58,13 +58,13 @@ class FetchStops extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="fetchStopContainerDiv">
                 <p> SELECT A DIRECTION </p>
                 <p> {this.state.leavingFrom} </p>
                 {this.state.stopOptions.length > 0 ?
                 this.state.stopOptions.map((route, index) => {
                     return( 
-                        <div className="routeStops"
+                        <div
                         key={index}>
                             <p>{route["Text"]}</p>
                             <p>{route["Value"]}</p>

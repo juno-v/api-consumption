@@ -62,6 +62,7 @@ class FetchData extends Component {
 
     return ( 
       <div className="fetchDataContainerDiv">
+        <div className="routeListDiv">
         <h1> Transit Routes in service for today </h1>
 
         {this.state.routeList.length > 0 ? 
@@ -87,6 +88,7 @@ class FetchData extends Component {
         leavingFrom={this.state.leavingFrom} /> 
         :
         null }
+        </div>
       </div>
      );
   }

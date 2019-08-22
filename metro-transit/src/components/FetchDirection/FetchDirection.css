@@ -1,3 +1,9 @@
 .routeDirection {
-    background-color: yellow; 
+    background-color: grey; 
+}
+
+.fetchDirectionContainerDiv{
+    border-style: solid; 
+    width: 40%; 
+    margin-top: 10px; 
 }

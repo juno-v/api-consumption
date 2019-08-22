@@ -54,7 +54,7 @@ class FetchDirection extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="fetchDirectionContainerDiv">
                 <p> SELECT A DIRECTION </p>
                 <p> {this.state.leavingFrom} </p>
                 {this.state.directionOptions.length > 0 ?
@@ -62,8 +62,9 @@ class FetchDirection extends Component {
                     return( 
                         <div className="routeDirection"
                         key={index}>
-                            <p>{route["Text"]}</p>
-                            <p>{route["Value"]}</p>
+                            <ul>
+                                <li> {route["Text"]} </li>
+                            </ul>
 
                             <button
                             onClick={this.selectRouteDirection}

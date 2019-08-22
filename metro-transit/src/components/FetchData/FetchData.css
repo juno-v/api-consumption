@@ -1,4 +1,12 @@
 .fetchDataContainerDiv {
     border-style: solid; 
-    width: 40%; 
+    width: 100%; 
+    text-align: center; 
+}
+
+.routeListDiv {
+    text-align: left; 
+    border-style: solid; 
+    width: 50%; 
+    margin: 0 auto; 
 }
