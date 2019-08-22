@@ -5,7 +5,7 @@ import FetchStops from "../FetchStops/FetchStops";
 class FetchDirection extends Component {
     state = { 
         routeNumber: this.props.routeNumber, 
-        leavingFromr: this.props.leavingFromr, 
+        leavingFrom: this.props.leavingFrom, 
         directionOptions: '', 
         selectedDirection: '', 
         showGetStopsComponent: false, 
@@ -47,11 +47,6 @@ class FetchDirection extends Component {
           })
       }
 
-      check = () => {
-        //   console.log(`the direction object is `, this.state.directionOptions);
-          console.log(`the selected direction is `, this.state.selectedDirection);
-      }
-
      componentDidMount () {
          this.getDirection(); 
      }
@@ -60,7 +55,7 @@ class FetchDirection extends Component {
         return ( 
             <div>
                 <p> SELECT A DIRECTION </p>
-                <p> {this.state.leavingFromr} </p>
+                <p> {this.state.leavingFrom} </p>
                 {this.state.directionOptions.length > 0 ?
                 this.state.directionOptions.map((route, index) => {
                     return( 
@@ -79,13 +74,13 @@ class FetchDirection extends Component {
                 }) : null} 
 
                 {this.state.showGetStopsComponent ?
+
                 <FetchStops 
-                leavingFromr={this.state.selectedDirection} /> 
+                leavingFrom={this.state.leavingFrom}
+                selectedDirection={this.state.selectedDirection}
+                routeNumber={this.state.routeNumber} /> 
                 :
                 null }
-                
-                <button onClick={this.check}> CHECK </button>
-                
             </div>
          );
     }

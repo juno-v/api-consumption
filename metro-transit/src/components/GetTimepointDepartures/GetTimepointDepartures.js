@@ -3,16 +3,20 @@ import "./GetTimepointDepartures.css";
 
 class GetTimepointDepartures extends Component {
     state = { 
-        selectdRoute: this.props.route, 
-        selectedDirection: this.props.direction, 
-        selectedStop: this.props.selectedStop, 
-        scheduledDeparture: '', 
+        leavingFrom: this.props.leavingFrom,
+        selectedDirection: this.props.selectedDirection, 
+        selectedStop: this.props.selectedStop,  
+        selectedStopname: this.props.selectedStopname, 
+        scheduledDepartures: '',
+        selectedDeparture: '', 
+        showFinalResult: false,
+
     }
 
     async getDeparture () {
         try {
           
-          let route = parseInt(this.state.selectdRoute); 
+          let route = parseInt(this.state.leavingFrom); 
           let direction = parseInt(this.state.selectedDirection);
           let stop = this.state.selectedStop; 
     
@@ -27,7 +31,7 @@ class GetTimepointDepartures extends Component {
           else { 
             response.json().then((data) => {
                 this.setState({
-                    scheduledDeparture: data, 
+                    scheduledDepartures: data, 
                 })
             });
           }
@@ -37,22 +41,47 @@ class GetTimepointDepartures extends Component {
         }
       }
 
-      check = () => {
-        console.log(this.state.stops)
+      selectDeparture = (event) => {
+        console.log(event.target.value); 
+        this.setState({
+            ...this.state, 
+            selectedDeparture: event.target.value, 
+        })
       }
 
      componentDidMount () {
          this.getDeparture(); 
      }
 
+
     render() { 
+
+
+        let direction = this.state.selectedDirection; 
+        if (direction === "4") {
+            direction = 'NORTH'; 
+        }
+        else if (direction === "3") {
+            direction = 'WEST';
+        }
+
+        else if (direction === "2") {
+            direction = 'EAST';
+        }
+        else if (direction === "1") {
+            direction = 'SOUTH';
+        }
+        else {
+            direction = 'Error, unable to retrieve direction. Try again later.'; 
+        }
+
         return ( 
             <div>
               
-                <h1 onClick={this.check}> COMPLETE DETAILS FOR STOP BELOW: </h1>
+                <h1 onClick={this.check}> SELECT STOP TIME OPTIONS </h1>
 
-                {this.state.scheduledDeparture.length > 0 ?
-                this.state.scheduledDeparture.map((stop, index) => {
+                {this.state.scheduledDepartures.length > 0 ?
+                this.state.scheduledDepartures.map((stop, index) => {
                     return( 
                         <div className="stops"
                         key={index}>
@@ -60,13 +89,25 @@ class GetTimepointDepartures extends Component {
                             <p>{stop["DepartureText"]}</p>
 
                             <button
-                            onClick={this.selectedStop}
+                            onClick={this.selectDeparture}
                             value={stop["DepartureTime"]}>
-                                SELECT THIS DIRECTION
+                                SELECT THIS STOP
                             </button>
                         </div>
                     )
                 }) : null} 
+
+                <h1>DETAILS ABOUT SELECTED ROUTE</h1>
+
+                {this.state.selectedDeparture.length > 0 ? 
+                <div>
+                    <p>Leaving From: {this.state.leavingFrom}</p>
+                    <p>Going To: {this.state.selectedStopname}</p>
+                    <p>Direction: {direction} </p>
+                    <p>Date/Time departing: {this.state.selectedDeparture}</p>
+                </div>
+                :
+                <p>sorry! couldn't load anything</p>}
             </div>
          );
     }
