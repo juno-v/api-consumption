@@ -53,10 +53,6 @@ class GetTimepointDepartures extends Component {
         console.log(`check overall selections`, this.state); 
       }
 
-      check = () => {
-          console.log(this.state)
-      }
-
      componentDidMount () {
          this.getDeparture(); 
          console.log(this.state)
@@ -90,7 +86,6 @@ class GetTimepointDepartures extends Component {
         
         result = result / 1000 / 60;
         
-        console.log(`Departing in`, Math.floor(result), `minutes`); 
         time =  Math.floor(result); 
         return time; 
       }
@@ -117,11 +112,12 @@ class GetTimepointDepartures extends Component {
             direction = 'Error, unable to retrieve direction. Try again later.'; 
         }
 
+        let currentDateTime = new Date(); 
 
         return ( 
             <div>
               
-                <h1 onClick={this.check}> SELECT SCHEDULE DEPARTURE TIME</h1>
+                <h1> SELECT SCHEDULE DEPARTURE TIME TO: {this.state.selectedStopname}</h1>
                 <hr/>
 
                 {this.state.scheduledDepartures.length > 0 ?
@@ -149,7 +145,7 @@ class GetTimepointDepartures extends Component {
                     <p>Leaving From: {this.state.leavingFrom}</p>
                     <p>Going To: {this.state.selectedStopname}</p>
                     <p>Direction: {direction} </p>
-                    <p>Bus route is departing in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
+                  <p>Bus route is departing at {currentDateTime.toUTCString()} in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
                 </div>
                 :
                 <p>Please select a departure option to see your final route details!</p>}

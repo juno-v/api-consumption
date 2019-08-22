@@ -68,7 +68,7 @@ class GetStops extends Component {
                         <div
                         key={index}>
                             <p>{route["Text"]}</p>
-                            <p>{route["Value"]}</p>
+                            {/* <p>{route["Value"]}</p> */}
 
                             <button
                             onClick={this.selectGoingTo}
