@@ -59,7 +59,7 @@ class FetchStops extends Component {
     render() { 
         return ( 
             <div className="fetchStopContainerDiv">
-                <p> SELECT A STOP </p>
+                <p> SELECT A STOP LEAVING FROM {this.state.leavingFrom} </p>
                 <hr/>
                 <p> {this.state.leavingFrom} </p>
                 {this.state.stopOptions.length > 0 ?
