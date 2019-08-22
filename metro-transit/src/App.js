@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Header from "./components/Header/Header"; 
-import Headline from "./components/Headline/Headline"; 
-import FetchData from "./components/FetchData/FetchData"; 
+// import Header from "./components/Header/Header"; 
+// import Headline from "./components/Headline/Headline"; 
+import GetRoutes from "./components/GetRoutes/GetRoutes"; 
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Headline header="Posts" description="Click the button to render posts" /> 
       </section> */}
       
-     <FetchData /> 
+     <GetRoutes /> 
     </div>
   );
 }
