@@ -59,7 +59,8 @@ class FetchStops extends Component {
     render() { 
         return ( 
             <div className="fetchStopContainerDiv">
-                <p> SELECT A DIRECTION </p>
+                <p> SELECT A STOP </p>
+                <hr/>
                 <p> {this.state.leavingFrom} </p>
                 {this.state.stopOptions.length > 0 ?
                 this.state.stopOptions.map((route, index) => {
@@ -73,11 +74,13 @@ class FetchStops extends Component {
                             onClick={this.selectGoingTo}
                             value={route["Value"]}
                             name={route["Text"]}>
-                                SELECT THIS DIRECTION
+                                SELECT THIS STOP
                             </button>
                         </div>
                     )
                 }) : null} 
+
+                <hr/>
 
                 {this.state.GetTimepointDepartures ?
 

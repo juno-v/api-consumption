@@ -81,7 +81,8 @@ class GetTimepointDepartures extends Component {
         return ( 
             <div>
               
-                <h1 onClick={this.check}> SELECT STOP TIME OPTIONS </h1>
+                <h1 onClick={this.check}> SELECT SCHEDULE DEPARTURE TIME</h1>
+                <hr/>
 
                 {this.state.scheduledDepartures.length > 0 ?
                 this.state.scheduledDepartures.map((stop, index) => {
@@ -99,8 +100,10 @@ class GetTimepointDepartures extends Component {
                         </div>
                     )
                 }) : null} 
+                <hr/> 
 
                 <h1 onClick={this.checkFinalResult} >DETAILS ABOUT SELECTED ROUTE</h1>
+                <hr/>
 
                 {this.state.selectedDeparture.length > 0 ? 
                 <div>

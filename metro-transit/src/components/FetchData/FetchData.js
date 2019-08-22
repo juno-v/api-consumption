@@ -63,7 +63,8 @@ class FetchData extends Component {
     return ( 
       <div className="fetchDataContainerDiv">
         <div className="routeListDiv">
-        <h1> Transit Routes in service for today </h1>
+        <h1> Transit Routes in service for today </h1> 
+        <hr/> 
 
         {this.state.routeList.length > 0 ? 
         this.state.routeList.map((route, index) => {
@@ -80,6 +81,8 @@ class FetchData extends Component {
           )
         }) : 
           <p> Unable to get the route list. </p> }
+
+        <hr/>
 
 
         {this.state.showRouteDirectionComponent ?

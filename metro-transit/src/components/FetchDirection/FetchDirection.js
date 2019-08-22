@@ -56,6 +56,7 @@ class FetchDirection extends Component {
         return ( 
             <div className="fetchDirectionContainerDiv">
                 <p> SELECT A DIRECTION </p>
+                <hr/> 
                 <p> {this.state.leavingFrom} </p>
                 {this.state.directionOptions.length > 0 ?
                 this.state.directionOptions.map((route, index) => {
