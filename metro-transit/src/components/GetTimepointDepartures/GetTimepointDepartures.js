@@ -62,6 +62,39 @@ class GetTimepointDepartures extends Component {
          console.log(this.state)
      }
 
+     departureInMinutes = (time) => {
+        let date = time; 
+        let convertedDate = []
+        
+        for(let i=0; i < date.length; i++) {
+          let convert = parseInt(date[i]); 
+        
+          if(isNaN(convert) === false) {
+            convertedDate.push(convert); 
+          }
+        }
+        convertedDate.pop();
+        convertedDate.pop();
+        convertedDate.pop();
+        convertedDate.pop();
+        
+        convertedDate = convertedDate.join(""); 
+        convertedDate= parseInt(convertedDate); 
+        
+        let currentDate = new Date(); 
+        let currentTime = currentDate.getTime();
+        
+        let departTime = convertedDate; 
+        
+        let result = departTime - currentTime; 
+        
+        result = result / 1000 / 60;
+        
+        console.log(`Departing in`, Math.floor(result), `minutes`); 
+        time =  Math.floor(result); 
+        return time; 
+      }
+
 
     render() { 
 
@@ -85,14 +118,6 @@ class GetTimepointDepartures extends Component {
         }
 
 
-        let time; 
-        if (this.state.selectedDeparture[0] > 12) {
-            time = "PM"
-        } 
-        else {
-            time = "AM"; 
-        }
-
         return ( 
             <div>
               
@@ -104,12 +129,11 @@ class GetTimepointDepartures extends Component {
                     return( 
                         <div className="stops"
                         key={index}>
-                            {/* <p>{stop["DepartureTime"]}</p> */}
-                            <p>{stop["DepartureText"]} {time}</p>
+                            <p>Departing in {this.departureInMinutes(stop["DepartureTime"])} minutes.</p>
 
                             <button
                             onClick={this.selectDeparture}
-                            value={stop["DepartureText"]}>
+                            value={stop["DepartureTime"]}>
                                 SELECT THIS STOP
                             </button>
                         </div>
@@ -125,7 +149,7 @@ class GetTimepointDepartures extends Component {
                     <p>Leaving From: {this.state.leavingFrom}</p>
                     <p>Going To: {this.state.selectedStopname}</p>
                     <p>Direction: {direction} </p>
-                    <p>Date/Time departing: {this.state.selectedDeparture} {time} </p>
+                    <p>Bus route is departing in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
                 </div>
                 :
                 <p>Please select a departure option to see your final route details!</p>}
