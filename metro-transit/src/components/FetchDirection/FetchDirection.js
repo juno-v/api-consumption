@@ -4,8 +4,8 @@ import FetchStops from "../FetchStops/FetchStops";
 
 class FetchDirection extends Component {
     state = { 
-        routeID: this.props.routeID, 
-        selectedRoute: this.props.selectedRoute, 
+        routeNumber: this.props.routeNumber, 
+        leavingFromr: this.props.leavingFromr, 
         directionOptions: '', 
         selectedDirection: '', 
         showGetStopsComponent: false, 
@@ -14,9 +14,9 @@ class FetchDirection extends Component {
     async getDirection () {
         try {
           
-          let routeID = parseInt(this.state.routeID); 
+          let routeNumber = parseInt(this.state.routeNumber); 
     
-          let response = await fetch(`http://svc.metrotransit.org/NexTrip/Directions/${routeID}?format=json`);
+          let response = await fetch(`http://svc.metrotransit.org/NexTrip/Directions/${routeNumber}?format=json`);
     
           if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
@@ -60,7 +60,7 @@ class FetchDirection extends Component {
         return ( 
             <div>
                 <p> SELECT A DIRECTION </p>
-                <p> {this.state.selectedRoute} </p>
+                <p> {this.state.leavingFromr} </p>
                 {this.state.directionOptions.length > 0 ?
                 this.state.directionOptions.map((route, index) => {
                     return( 
@@ -80,7 +80,7 @@ class FetchDirection extends Component {
 
                 {this.state.showGetStopsComponent ?
                 <FetchStops 
-                selectedRoute={this.state.selectedDirection} /> 
+                leavingFromr={this.state.selectedDirection} /> 
                 :
                 null }
                 
