@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import "./FetchStops.css"; 
+import "./GetStops.scss"; 
 import GetTimepointDepartures from "../GetTimepointDepartures/GetTimepointDepartures"; 
 
-class FetchStops extends Component {
+class GetStops extends Component {
     state = { 
         leavingFrom: this.props.leavingFrom, 
         selectedDirection: this.props.selectedDirection, 
@@ -97,4 +97,4 @@ class FetchStops extends Component {
     }
 }
  
-export default FetchStops;
+export default GetStops;
