@@ -7,6 +7,7 @@ class GetTimepointDepartures extends Component {
         selectedDirection: this.props.selectedDirection, 
         selectedStop: this.props.selectedStop,  
         selectedStopname: this.props.selectedStopname, 
+        routeNumber: this.props.routeNumber, 
         scheduledDepartures: '',
         selectedDeparture: '', 
         showFinalResult: false,
@@ -16,7 +17,7 @@ class GetTimepointDepartures extends Component {
     async getDeparture () {
         try {
           
-          let route = parseInt(this.state.leavingFrom); 
+          let route = parseInt(this.state.routeNumber); 
           let direction = parseInt(this.state.selectedDirection);
           let stop = this.state.selectedStop; 
     
@@ -53,11 +54,12 @@ class GetTimepointDepartures extends Component {
       }
 
       check = () => {
-          console.log(this.state.selectedDeparture[0])
+          console.log(this.state)
       }
 
      componentDidMount () {
          this.getDeparture(); 
+         console.log(this.state)
      }
 
 

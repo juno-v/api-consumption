@@ -88,7 +88,8 @@ class FetchStops extends Component {
                 leavingFrom={this.state.leavingFrom}
                 selectedDirection={this.state.selectedDirection} 
                 selectedStop={this.state.selectedStop}
-                selectedStopname={this.state.selectedStopname} /> 
+                selectedStopname={this.state.selectedStopname}
+                routeNumber={this.state.routeNumber} /> 
                 :
                 null }
             </div>
