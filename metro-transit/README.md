@@ -7,7 +7,7 @@ The program should be able to retrieve the following data about a bus route: <br
 - in which *direction* will the bus stop be heading 
 
     - __EXAMPLE__: 
-        - If you wanted to know when the next bus is leaving *from* Target's Brooklyn Park campus *to* Target's downtown campus: <br/>
+        - If you wanted to know when the next bus is leaving __from__ Target's Brooklyn Park campus __to__ Target's downtown campus: <br/>
         - $ go run nextbus.go and get the following: 
         - “Express -Target -Hwy 252 and 73rd Av P&R -Mpls” 
         - “Target North Campus Building F” 
