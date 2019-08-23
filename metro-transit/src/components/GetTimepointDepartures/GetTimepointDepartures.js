@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./GetTimepointDepartures.css"; 
+import "./GetTimepointDepartures.scss"; 
 
 class GetTimepointDepartures extends Component {
     state = { 
@@ -151,8 +151,9 @@ class GetTimepointDepartures extends Component {
                 {this.state.scheduledDepartures.length > 0 ?
                 this.state.scheduledDepartures.map((stop, index) => {
                     return( 
-                        <div className="stops"
+                        <div className="stopsDiv"
                         key={index}>
+                          
                             <p>Departing in {this.departureInMinutes(stop["DepartureTime"])} minutes.</p>
 
                             <button
@@ -174,11 +175,11 @@ class GetTimepointDepartures extends Component {
                       <p>Leaving From: {this.state.leavingFrom}</p>
                       <p>Going To: {this.state.selectedStopname}</p>
                       <p>Direction: {direction} </p>
-                    <p>Bus route is departing at {currentDateTime.toString()} in:  
-                    
-                    <span className="finalDateTimeSelection">
-                      {this.departureInMinutes(this.state.selectedDeparture)} minutes.
-                    </span></p>
+                      <p>Bus route is departing at {currentDateTime.toString()} in:  
+                      <span className="finalDateTimeSelection">
+                        {this.departureInMinutes(this.state.selectedDeparture)}  minutes.
+                      </span>
+                      </p>
                   </div>
                   :
                   <p> Unable to retrieve final results. Please select a departure time again. 

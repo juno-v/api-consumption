@@ -6,12 +6,24 @@
     background-color: #3D68C9; 
 }
 
+.stopsDiv {
+
+    p {
+        font-size: 20px; 
+    }
+
+    button {
+        font-size: 20px; 
+    }
+}
+
 .finalResultDiv {
     background-color: #FF9191;
+    font-size: 20px; 
 }
 
 .finalDateTimeSelection {
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .newRouteButton {

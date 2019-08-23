@@ -76,6 +76,7 @@ class GetStops extends Component {
                 this.state.stopOptions.map((route, index) => {
                     return( 
                         <div
+                        className="routeOptions"
                         key={index}>
                             <p>{route["Text"]}</p>
                             {/* <p>{route["Value"]}</p> */}
