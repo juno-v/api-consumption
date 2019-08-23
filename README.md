@@ -20,20 +20,16 @@ The program should be able to retrieve the following data about a bus route: <br
 - Git (Command Line Tools may already have Git installed along with it) 
 
 # Instructions for local development
-1. Fork/Download/Clone this repo 
-2. cd into the metro-transit directory 
-    - open the terminal in your project. 
-    - type ls and enter
-    - if you see "metro transit", type cd metro-transit 
-    - if you don't see metro-transit, skip to step 3. 
-3. in your terminal, type npm install to get all of the dependencies 
-4. open localhost:3000 in your terminal if it doesn't automatically pop up. 
+1. Fork/Download/Clone this repo  
+3. Open your terminal in the root of the project, type npm install to get install of the required dependencies 
+4. open localhost:3000 in your browser if it doesn't automatically pop up. 
 5. start developing it to your own taste or demo! 
+    - __NOTE: scroll after every selection, a new option will open up down the page until the final result is achieved.__
 
 # Folder strucutre 
 - There are 4 different API get requests. 
 - Each request is located in it's own folder found in src/components/
-- __Below is the order of the requests__: 
+- __Below is the component order of the API requests__: 
 1. __GetRoutes component__
 - This is to to retrieve all of the routes that are in service for the current day. 
 - The user will select a route which triggers a fetch for getting all the __directions__ available for that selected route. 
