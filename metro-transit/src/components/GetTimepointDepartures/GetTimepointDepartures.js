@@ -137,7 +137,7 @@ class GetTimepointDepartures extends Component {
     }
 
     // creating current date and time variable to reference in final result 
-    // rather than having just minutes 
+    // rather than having just minutes until departure
     let currentDateTime = new Date(); 
 
         return ( 
