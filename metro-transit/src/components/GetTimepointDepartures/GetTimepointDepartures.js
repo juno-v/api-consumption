@@ -110,6 +110,11 @@ class GetTimepointDepartures extends Component {
       return time; 
     }
 
+    // refresh windows and clear selections to search for a new route 
+    searchNewRoute = () => {
+      window.location.reload();
+    }
+
     render() { 
 
     // convert the number from api fetches into their designated directions
@@ -178,6 +183,14 @@ class GetTimepointDepartures extends Component {
                   :
                   <p> Unable to retrieve final results. Please select a departure time again. 
                     Refresh if message still persists. </p>}
+
+                    <br/> 
+
+                    <button 
+                    onClick={this.searchNewRoute}
+                    className="newRouteButton"> 
+                      Search for a new route
+                    </button>
                 </div>
             </div>
          );
