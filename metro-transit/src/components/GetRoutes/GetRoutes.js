@@ -65,7 +65,7 @@ class GetRoutes extends Component {
     return ( 
       <div className="fetchDataContainerDiv">
         <div className="routeListDiv">
-        <h1> Metro transit routes in service for today </h1> 
+        <div className="routeListHeader"> <h1> Metro transit routes in service for today </h1>  </div>
         <hr/> 
 
 

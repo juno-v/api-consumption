@@ -1,9 +1,13 @@
-.routeDirection {
-    background-color: grey; 
+.fetchDirectionContainerDiv {
+    width: 100%; 
+    background-color: #ADADAD; 
 }
 
-.fetchDirectionContainerDiv{
-    border-style: solid; 
-    width: 40%; 
-    margin-top: 10px; 
+.directionHeader {
+    background-color: #6D6D6D; 
+    height: 100px; 
+}
+
+.selectRouteButton {
+    margin-left: 10px; 
 }

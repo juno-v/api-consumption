@@ -66,9 +66,12 @@ class GetStops extends Component {
     render() { 
         return ( 
             <div className="fetchStopContainerDiv">
-                <p> SELECT A STOP LEAVING FROM {this.state.leavingFrom} </p>
+                <div className="stopHeader">
+                  <h1> Select a stop leaving from </h1>
+                  <h1> {this.state.leavingFrom} </h1>
+                  <h1> {this.props.directionName} </h1> 
+                </div>
                 <hr/>
-                <p> {this.state.leavingFrom} </p>
                 {this.state.stopOptions.length > 0 ?
                 this.state.stopOptions.map((route, index) => {
                     return( 

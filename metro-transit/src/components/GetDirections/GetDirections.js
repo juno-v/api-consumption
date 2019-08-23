@@ -7,7 +7,8 @@ class GetDirections extends Component {
         routeNumber: this.props.routeNumber, 
         leavingFrom: this.props.leavingFrom, 
         directionOptions: '', 
-        selectedDirection: '', 
+        selectedDirectionNumber: '', 
+        selectedDirectionName: '', 
         showGetStopsComponent: false, 
     }
 
@@ -46,7 +47,8 @@ class GetDirections extends Component {
 
         this.setState({
             ...this.state, 
-            selectedDirection: event.target.value, 
+            selectedDirectionNumber: event.target.value, 
+            selectRouteDirectionName: event.target.name, 
             showGetStopsComponent: !this.state.showGetStopsComponent, 
         })
     }
@@ -59,23 +61,31 @@ class GetDirections extends Component {
     render() { 
         return ( 
             <div className="fetchDirectionContainerDiv">
-                <p> SELECT A DIRECTION </p>
+                <div className="directionHeader"> 
+                    <h1> Select a direction leaving from: </h1>
+                    <h1> {this.state.leavingFrom} </h1>
+                </div>
+
                 <hr/> 
-                <p> {this.state.leavingFrom} </p>
+
                 {this.state.directionOptions.length > 0 ?
                 this.state.directionOptions.map((route, index) => {
                     return( 
                         <div className="routeDirection"
                         key={index}>
                             <ul>
-                                <li> {route["Text"]} </li>
-                            </ul>
+                                <li> 
+                                    {route["Text"]} 
 
-                            <button
-                            onClick={this.selectRouteDirection}
-                            value={route["Value"]}>
-                                SELECT THIS DIRECTION
-                            </button>
+                                    <button
+                                    className="selectRouteButton"
+                                    onClick={this.selectRouteDirection}
+                                    value={route["Value"]}
+                                    name={route["Text"]} >
+                                        Select this direction 
+                                    </button> 
+                                </li>
+                            </ul>
                         </div>
                     )
                 }) : 
@@ -86,8 +96,10 @@ class GetDirections extends Component {
 
                 <GetStops 
                 leavingFrom={this.state.leavingFrom}
-                selectedDirection={this.state.selectedDirection}
-                routeNumber={this.state.routeNumber} /> 
+                selectedDirection={this.state.selectedDirectionNumber}
+                routeNumber={this.state.routeNumber}
+                directionName={this.state.selectedDirectionName}
+                 /> 
                 :
                 null }
             </div>

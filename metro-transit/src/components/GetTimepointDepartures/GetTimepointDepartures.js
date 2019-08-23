@@ -136,9 +136,11 @@ class GetTimepointDepartures extends Component {
     let currentDateTime = new Date(); 
 
         return ( 
-            <div>
+            <div className="timePointContainerDiv">
+              <div className="timePointHeader">
+                <h1> Select a schedule departure time to : {this.state.selectedStopname} </h1> 
+              </div>
               
-                <h1> SELECT SCHEDULE DEPARTURE TIME TO: {this.state.selectedStopname}</h1>
                 <hr/>
 
                 {this.state.scheduledDepartures.length > 0 ?
@@ -157,20 +159,22 @@ class GetTimepointDepartures extends Component {
                     )
                 }) : null} 
                 <hr/> 
+                
+                <div className="finalResultDiv"> 
+                  <h1 onClick={this.checkFinalResult} >DETAILS ABOUT SELECTED ROUTE</h1>
+                  <hr/>
 
-                <h1 onClick={this.checkFinalResult} >DETAILS ABOUT SELECTED ROUTE</h1>
-                <hr/>
-
-                {this.state.selectedDeparture.length > 0 ? 
-                <div>
-                    <p>Leaving From: {this.state.leavingFrom}</p>
-                    <p>Going To: {this.state.selectedStopname}</p>
-                    <p>Direction: {direction} </p>
-                  <p>Bus route is departing at {currentDateTime.toUTCString()} in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
+                  {this.state.selectedDeparture.length > 0 ? 
+                  <div>
+                      <p>Leaving From: {this.state.leavingFrom}</p>
+                      <p>Going To: {this.state.selectedStopname}</p>
+                      <p>Direction: {direction} </p>
+                    <p>Bus route is departing at {currentDateTime.toUTCString()} in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
+                  </div>
+                  :
+                  <p> Unable to retrieve final results. Please select a departure time again. 
+                    Refresh if message still persists. </p>}
                 </div>
-                :
-                <p>Unable to retrieve final results. Please select a departure time again. 
-                  Refresh if message still occurs. </p>}
             </div>
          );
     }
