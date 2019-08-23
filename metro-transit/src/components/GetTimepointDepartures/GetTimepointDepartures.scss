@@ -1,0 +1,42 @@
+.timePointContainerDiv {
+    background-color: #507DE5;
+}
+
+.timePointHeader {
+    background-color: #3D68C9; 
+
+    P {
+        font-size: 20px; 
+        font-weight: bold; 
+    }
+}
+
+.stopsDiv {
+
+    p {
+        font-size: 20px; 
+    }
+
+    button {
+        font-size: 20px; 
+    }
+}
+
+.finalResultDiv {
+    background-color: #FF9191;
+    font-size: 20px; 
+}
+
+.finalDateTimeSelection {
+    font-weight: bold;
+}
+
+.newRouteButton {
+    background-color: #FFBB2B;
+    font-size: 20px; 
+    height: 100px; 
+    width: 200px; 
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
