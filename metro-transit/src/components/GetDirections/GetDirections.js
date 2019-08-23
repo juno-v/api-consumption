@@ -90,7 +90,7 @@ class GetDirections extends Component {
                     )
                 }) : 
                 <p> This route doesn't have any stops schedule.
-                     Please select a different rounte. </p>} 
+                     Please select a different route. </p>} 
 
                 {this.state.showGetStopsComponent ?
 

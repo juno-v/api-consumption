@@ -163,7 +163,8 @@ class GetTimepointDepartures extends Component {
                             </button>
                         </div>
                     )
-                }) : null} 
+                }) : 
+                <p> Sorry, this route is not available today. Please refresh and select a different routue.</p>} 
                 <hr/> 
                 
                 <div className="finalResultDiv"> 
