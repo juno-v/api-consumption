@@ -6,7 +6,7 @@ The program should be able to retrieve the following data about a bus route: <br
 - bus *stop* that the person is *going to*
 - in which *direction* will the bus stop be heading 
 
-    - EXAMPLE: 
+    - __EXAMPLE__: 
         - If you wanted to know when the next bus is leaving *from* our Brooklyn Park campus *to* our downtown campus: <br/>
         - $ go run nextbus.go and get the following: 
         - “Express -Target -Hwy 252 and 73rd Av P&R -Mpls” 
