@@ -72,13 +72,17 @@ class GetRoutes extends Component {
         {this.state.routeList.length > 0 ? 
         this.state.routeList.map((route, index) => {
           return(
-            <div key={index}> 
-              {route["Description"]} 
+            <div 
+            className="routes"
+            key={index}> 
+                {route["Description"]} 
+
 
               <button
               onClick={this.getRouteDirection}
               value={route["Route"]} 
               name={route["Description"]} 
+              className="selectRouteButton"
               > SELECT </button>
             </div>
           )
