@@ -66,8 +66,6 @@ class GetRoutes extends Component {
       <div className="fetchDataContainerDiv">
         <div className="routeListDiv">
         <div className="routeListHeader"> <h1> Metro transit routes in service for today </h1>  </div>
-        <hr/> 
-
 
         {this.state.routeList.length > 0 ? 
         this.state.routeList.map((route, index) => {
@@ -78,20 +76,19 @@ class GetRoutes extends Component {
                 {route["Description"]} 
 
 
-              <button
-              onClick={this.getRouteDirection}
-              value={route["Route"]} 
-              name={route["Description"]} 
-              className="selectRouteButton"
-              > SELECT </button>
+              <a href="#scrollToDirections">
+                <button
+                onClick={this.getRouteDirection}
+                value={route["Route"]} 
+                name={route["Description"]} 
+                className="selectRouteButton"
+                > SELECT </button>
+              </a>
             </div>
           )
         }) : 
-          <h1> Currently getting list of routes in service for the day. 
-          Please reload or try again later if this message continues to display. </h1> }
-
-        <hr/>
-
+        <h1> Currently getting list of routes in service for the day. 
+        Please reload or try again later if this message continues to display. </h1> }
 
         {this.state.showRouteDirectionComponent ?
         <GetDirections 

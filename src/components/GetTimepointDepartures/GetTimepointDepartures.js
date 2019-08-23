@@ -141,12 +141,12 @@ class GetTimepointDepartures extends Component {
     let currentDateTime = new Date(); 
 
         return ( 
-            <div className="timePointContainerDiv">
+            <div 
+            id="scrollToDepartureTimes"
+            className="timePointContainerDiv">
               <div className="timePointHeader">
                 <h1> Select a schedule departure time to : {this.state.selectedStopname} </h1> 
               </div>
-              
-                <hr/>
 
                 {this.state.scheduledDepartures.length > 0 ?
                 this.state.scheduledDepartures.map((stop, index) => {

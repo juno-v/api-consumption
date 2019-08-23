@@ -65,11 +65,14 @@ class GetStops extends Component {
 
     render() { 
         return ( 
-            <div className="fetchStopContainerDiv">
+            <div 
+            id="scrollToStops"
+            className="fetchStopContainerDiv">
                 <div className="stopHeader">
-                  <h1> Select a stop leaving from </h1>
-                  <h1> {this.state.leavingFrom} </h1>
-                  <h1> {this.props.directionName} </h1> 
+                  <h1> Select a 
+                    <span className="underlineStop"> stop </span>
+                     leaving from {this.state.leavingFrom} {this.props.directionName}
+                    </h1>
                 </div>
                 <hr/>
                 {this.state.stopOptions.length > 0 ?
@@ -81,17 +84,17 @@ class GetStops extends Component {
                             <p>{route["Text"]}</p>
                             {/* <p>{route["Value"]}</p> */}
 
-                            <button
-                            onClick={this.selectGoingTo}
-                            value={route["Value"]}
-                            name={route["Text"]}>
-                                SELECT THIS STOP
-                            </button>
+                            <a href="#scrollToDepartureTimes">
+                              <button
+                              onClick={this.selectGoingTo}
+                              value={route["Value"]}
+                              name={route["Text"]}>
+                                  SELECT THIS STOP
+                              </button>
+                            </a>
                         </div>
                     )
                 }) : null} 
-
-                <hr/>
 
                 {this.state.GetTimepointDepartures ?
 

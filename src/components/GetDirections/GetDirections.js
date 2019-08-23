@@ -48,7 +48,7 @@ class GetDirections extends Component {
         this.setState({
             ...this.state, 
             selectedDirectionNumber: event.target.value, 
-            selectRouteDirectionName: event.target.name, 
+            selectedDirectionName: event.target.name, 
             showGetStopsComponent: !this.state.showGetStopsComponent, 
         })
     }
@@ -60,30 +60,36 @@ class GetDirections extends Component {
 
     render() { 
         return ( 
-            <div className="fetchDirectionContainerDiv">
-                <div className="directionHeader"> 
-                    <h1> Select a direction leaving from: </h1>
-                    <h1> {this.state.leavingFrom} </h1>
+            <div 
+            className="fetchDirectionContainerDiv">
+                <div 
+                id="scrollToDirections"
+                className="directionHeader"> 
+                    <h1> Select a 
+                        <span className="underlineDirection"> direction </span> 
+                        leaving from: {this.state.leavingFrom} 
+                    </h1>
                 </div>
-
-                <hr/> 
 
                 {this.state.directionOptions.length > 0 ?
                 this.state.directionOptions.map((route, index) => {
                     return( 
-                        <div className="routeDirection"
+                        <div
+                        className="routeDirection"
                         key={index}>
                             <ul>
                                 <li> 
                                     {route["Text"]} 
 
-                                    <button
-                                    className="selectRouteButton"
-                                    onClick={this.selectRouteDirection}
-                                    value={route["Value"]}
-                                    name={route["Text"]} >
-                                        Select this direction 
-                                    </button> 
+                                    <a href="#scrollToStops">
+                                        <button
+                                        className="selectRouteButton"
+                                        onClick={this.selectRouteDirection}
+                                        value={route["Value"]}
+                                        name={route["Text"]} >
+                                            Select this direction 
+                                        </button> 
+                                    </a>
                                 </li>
                             </ul>
                         </div>
