@@ -35,16 +35,16 @@ The program should be able to retrieve the following data about a bus route: <br
 - Each request is located in it's own folder found in src/components/
 - __Below is the order of the requests__: 
 1. __GetRoutes component__
-- This is to to retrieve all the routes that are in service for the current. 
-- The user will select which route which triggers a fetch for getting the __directions__ available for that selected route. 
+- This is to to retrieve all of the routes that are in service for the current day. 
+- The user will select a route which triggers a fetch for getting all the __directions__ available for that selected route. 
 2. __GetDirections component__ 
 - This is to retrieve the directions of the selected route. 
 - The user will select a direction for the route which triggers a fetch for getting all the __stop__ available for the selected route. 
 3. __GetStops component__ 
-- This is to retrive all of the stops available for the selecte route and direction that it is going in. 
-- The user will then select a stop to which triggers a fetch for getting the __next departure times available__. 
+- This is to retrive all of the stops available for the selected route and direction that it is going in. 
+- The user will then select a bus stop which triggers a fetch for getting the __next departure times available__. 
 4.__GetTimePointDepartures component__
-- This will retrieve the selected buses' 
+- This will retrieve the selected bus'
     -- route (leaving from)
     -- direction 
     -- stop (going to)
