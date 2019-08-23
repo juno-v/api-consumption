@@ -169,7 +169,7 @@ class GetTimepointDepartures extends Component {
                       <p>Leaving From: {this.state.leavingFrom}</p>
                       <p>Going To: {this.state.selectedStopname}</p>
                       <p>Direction: {direction} </p>
-                    <p>Bus route is departing at {currentDateTime.toUTCString()} in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
+                    <p>Bus route is departing at {currentDateTime.toString()} in: {this.departureInMinutes(this.state.selectedDeparture)} minutes.</p>
                   </div>
                   :
                   <p> Unable to retrieve final results. Please select a departure time again. 
