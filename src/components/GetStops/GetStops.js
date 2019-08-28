@@ -67,6 +67,7 @@ class GetStops extends Component {
         return ( 
             <div 
             id="scrollToStops"
+            data-test="fetchStopContainerDiv"
             className="fetchStopContainerDiv">
                 <div className="stopHeader">
                   <h1> Select a 
