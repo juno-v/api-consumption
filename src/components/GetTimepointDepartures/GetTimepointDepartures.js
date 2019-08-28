@@ -143,6 +143,7 @@ class GetTimepointDepartures extends Component {
         return ( 
             <div 
             id="scrollToDepartureTimes"
+            data-test="timePointContainerDiv"
             className="timePointContainerDiv">
               <div className="timePointHeader">
                 <h1> Select a schedule departure time to : {this.state.selectedStopname} </h1> 
