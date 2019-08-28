@@ -61,6 +61,7 @@ class GetDirections extends Component {
     render() { 
         return ( 
             <div 
+            data-test="fetchDirectionContainerDiv"
             className="fetchDirectionContainerDiv">
                 <div 
                 id="scrollToDirections"
